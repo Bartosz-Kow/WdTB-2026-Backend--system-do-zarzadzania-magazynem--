@@ -46,16 +46,23 @@
   <!-- LAB 01: wizytówka Waszego projektu, na jej podstawie prezentujecie projekt na początku LAB 02.
        Zastąpcie wszystkie znaczniki „uzupełnij” w nawiasach kwadratowych (reguła R1.04). -->
   <section class="card project">
-    <h2>[uzupełnij: nazwa projektu]</h2>
-    <p class="pitch">[uzupełnij: jedno zdanie – jaki problem rozwiązuje aplikacja i dla kogo]</p>
+    <h2>Warehouse Management</h2>
+    <p class="pitch">Magazyn obsługujący kilka sklepów internetowych prowadzi stany w Excelu i nie wie, gdzie leży konkretna sztuka towaru –
+       aplikacja pokazuje lokalizację i status każdej sztuki, śledzi jej przesunięcia, a każdy sklep widzi tylko swój towar.</p>
     <table>
-      <tr><td>Autorzy</td><td>[uzupełnij: imiona i nazwiska, grupa]</td></tr>
-      <tr><td>Dla kogo</td><td>[uzupełnij: persona, np. „Anna, właścicielka kawiarni, chce przyjmować rezerwacje stolików online”]</td></tr>
-      <tr><td>Najważniejsze funkcje</td><td>[uzupełnij: 3 funkcje, np. lista stolików, rezerwacja, raport dla właściciela]</td></tr>
+      <tr><td>Autorzy</td><td>Bartosz Kowynia (113505), Tomasz Kurowicki (113084)</td></tr>
+      <tr><td>Dla kogo</td><td>Marek, kierownik magazynu obsługującego kilka sklepów internetowych, chce w kilka sekund znaleźć sztukę
+          po numerze seryjnym i wiedzieć, co jest zarezerwowane; jego magazynierzy przyjmują i przesuwają towar, a sklepy-partnerzy
+          sprawdzają swoje stany i zlecają wydania.</td></tr>
+      <tr><td>Najważniejsze funkcje</td><td>wyszukiwarka sztuk (numer seryjny, SKU, lokalizacja); przesunięcia między lokalizacjami
+          z historią i zmiany statusów (przyjęta, na stanie, zarezerwowana, wydana, uszkodzona); zlecenia wydania z rolami
+          kierownik / magazynier / partner, gdzie partner widzi tylko swoje produkty</td></tr>
     </table>
     <h3>Zmiany w projekcie</h3>
     <ul>
-      <li><b>LAB 01:</b> [uzupełnij: co zmieniliście, np. nazwa projektu, konta zespołu, wizytówka]</li>
+      <li><b>LAB 01:</b> nazwa projektu (pakiet <code>pl.wsb.warehousemanagement</code>, klasa <code>WarehouseManagementApplication</code>,
+          artifactId i wersja z numerami indeksów w <code>pom.xml</code>), konta zespołu i konto testowe kierownika w <code>data.sql</code>,
+          wizytówka projektu</li>
     </ul>
     <p class="muted">Na kolejnych laboratoriach dopisujcie tu kolejne punkty.</p>
   </section>
