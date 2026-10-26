@@ -28,7 +28,7 @@ insert into inventory_item (serial_number, product_sku, status, received_at, zon
     ('SN-JKT-0003021', 'CLOTH-JKT-042',  'DAMAGED',  '2026-10-22 14:05:00', 'C', '05', '01', '023');
 
 -- ===== LAB 02 · stock_movement =====
-insert into stock_movement (serial_number, movement_type, occurred_at, quantity, source_location, destination_location, performed_by) values
-    ('SN-CHG-0001842', 'RECEIPT', '2026-10-20 08:15:00', 1, null,             'A-03-02-014', 'Marek (kierownik)'),
-    ('SN-LMP-0000917', 'TRANSFER', '2026-10-21 10:30:00', 1, 'B-01-02-006', 'B-01-04-006', 'Tomasz Kurowicki'),
-    ('SN-JKT-0003021', 'ADJUSTMENT', '2026-10-22 14:05:00', 1, 'C-05-01-023', null,        'Bartosz Kowynia');
+insert into stock_movement (serial_number, movement_type, occurred_at, source_location, destination_location, performed_by) values
+    ('SN-CHG-0001842', 'RECEIPT', '2026-10-20 08:15:00', null,             'A-03-02-014', 'kierownik@warehouse.test'),
+    ('SN-LMP-0000917', 'TRANSFER', '2026-10-21 10:30:00', 'B-01-02-006', 'B-01-04-006', 's492703@student.wroclaw.merito.pl'),
+    ('SN-JKT-0003021', 'ADJUSTMENT', '2026-10-22 14:05:00', 'C-05-01-023', null,        's700140@student.wroclaw.merito.pl');

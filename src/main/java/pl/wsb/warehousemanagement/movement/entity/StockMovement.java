@@ -29,27 +29,23 @@ public class StockMovement {
     @Column(name = "occurred_at", nullable = false)
     private LocalDateTime occurredAt;
 
-    @Column(name = "quantity", nullable = false)
-    private Integer quantity;
-
     @Column(name = "source_location", length = 80)
     private String sourceLocation;
 
     @Column(name = "destination_location", length = 80)
     private String destinationLocation;
 
-    @Column(name = "performed_by", nullable = false, length = 60)
+    @Column(name = "performed_by", nullable = false, length = 120)
     private String performedBy;
 
     protected StockMovement() {
     }
 
-    public StockMovement(String serialNumber, MovementType movementType, LocalDateTime occurredAt, Integer quantity,
+    public StockMovement(String serialNumber, MovementType movementType, LocalDateTime occurredAt,
                          String sourceLocation, String destinationLocation, String performedBy) {
         this.serialNumber = serialNumber;
         this.movementType = movementType;
         this.occurredAt = occurredAt;
-        this.quantity = quantity;
         this.sourceLocation = sourceLocation;
         this.destinationLocation = destinationLocation;
         this.performedBy = performedBy;
@@ -71,9 +67,6 @@ public class StockMovement {
         return occurredAt;
     }
 
-    public Integer getQuantity() {
-        return quantity;
-    }
 
     public String getSourceLocation() {
         return sourceLocation;
