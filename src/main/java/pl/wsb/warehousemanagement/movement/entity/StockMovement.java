@@ -4,10 +4,15 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import pl.wsb.warehousemanagement.account.domain.UserAccount;
+import pl.wsb.warehousemanagement.inventory.entity.InventoryItem;
 
 import java.time.LocalDateTime;
 
@@ -19,8 +24,9 @@ public class StockMovement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "serial_number", nullable = false, length = 60)
-    private String serialNumber;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "inventory_item_id", nullable = false)
+    private InventoryItem item;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "movement_type", nullable = false, length = 20)
@@ -35,15 +41,16 @@ public class StockMovement {
     @Column(name = "destination_location", length = 80)
     private String destinationLocation;
 
-    @Column(name = "performed_by", nullable = false, length = 120)
-    private String performedBy;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_account_id", nullable = false)
+    private UserAccount performedBy;
 
     protected StockMovement() {
     }
 
-    public StockMovement(String serialNumber, MovementType movementType, LocalDateTime occurredAt,
-                         String sourceLocation, String destinationLocation, String performedBy) {
-        this.serialNumber = serialNumber;
+    public StockMovement(InventoryItem item, MovementType movementType, LocalDateTime occurredAt,
+                         String sourceLocation, String destinationLocation, UserAccount performedBy) {
+        this.item = item;
         this.movementType = movementType;
         this.occurredAt = occurredAt;
         this.sourceLocation = sourceLocation;
@@ -55,8 +62,8 @@ public class StockMovement {
         return id;
     }
 
-    public String getSerialNumber() {
-        return serialNumber;
+    public InventoryItem getItem() {
+        return item;
     }
 
     public MovementType getMovementType() {
@@ -67,7 +74,6 @@ public class StockMovement {
         return occurredAt;
     }
 
-
     public String getSourceLocation() {
         return sourceLocation;
     }
@@ -76,7 +82,7 @@ public class StockMovement {
         return destinationLocation;
     }
 
-    public String getPerformedBy() {
+    public UserAccount getPerformedBy() {
         return performedBy;
     }
 }

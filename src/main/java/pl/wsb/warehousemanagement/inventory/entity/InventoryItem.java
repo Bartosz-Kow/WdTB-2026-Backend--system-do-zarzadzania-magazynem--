@@ -5,10 +5,14 @@ import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import pl.wsb.warehousemanagement.catalog.entity.Product;
 
 import java.time.LocalDateTime;
 
@@ -23,8 +27,9 @@ public class InventoryItem {
     @Column(name = "serial_number", nullable = false, unique = true, length = 60)
     private String serialNumber;
 
-    @Column(name = "product_sku", nullable = false, length = 40)
-    private String productSku;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "product_id", nullable = false)
+    private Product product;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, length = 20)
@@ -39,10 +44,10 @@ public class InventoryItem {
     protected InventoryItem() {
     }
 
-    public InventoryItem(String serialNumber, String productSku, InventoryStatus status, LocalDateTime receivedAt,
+    public InventoryItem(String serialNumber, Product product, InventoryStatus status, LocalDateTime receivedAt,
                          StorageLocation location) {
         this.serialNumber = serialNumber;
-        this.productSku = productSku;
+        this.product = product;
         this.status = status;
         this.receivedAt = receivedAt;
         this.location = location;
@@ -56,8 +61,8 @@ public class InventoryItem {
         return serialNumber;
     }
 
-    public String getProductSku() {
-        return productSku;
+    public Product getProduct() {
+        return product;
     }
 
     public InventoryStatus getStatus() {
