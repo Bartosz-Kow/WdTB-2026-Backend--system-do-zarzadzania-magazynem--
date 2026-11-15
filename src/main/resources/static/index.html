@@ -65,14 +65,20 @@
         wizytówka projektu</li>
       <li><b>LAB 02:</b> encje i tabele <code>product</code>, <code>inventory_item</code> oraz <code>stock_movement</code>,
         przykładowe dane startowe, statusy i rodzaje ruchów zapisane jako enum oraz wbudowana lokalizacja magazynowa</li>
+      <li><b>LAB 03:</b> skończony schemat bazy: nowe tabele <code>shop</code> (sklep-partner z kontem 1:1),
+        <code>issue_order</code> (zlecenie wydania), <code>issue_order_line</code> (pozycje zlecenia, encja łącząca)
+        i <code>issue_order_item</code> (skompletowane sztuki, <code>@ManyToMany</code>); relacje produkt → sklep,
+        sztuka → produkt, ruch → sztuka i ruch → konto magazyniera; pobieranie LAZY oraz repozytoria
+        z zapytaniami przez relacje; diagram w <code>SCHEMAT.md</code></li>
     </ul>
     <p class="muted">Na kolejnych laboratoriach dopisujcie tu kolejne punkty.</p>
   </section>
 
   <section class="card">
     <h2>1. Zajrzyjcie do bazy danych</h2>
-    <p>Aplikacja ma wbudowaną bazę H2. Zawiera tabele <code>user_account</code>, <code>product</code>,
-      <code>inventory_item</code> i <code>stock_movement</code> z danymi z pliku <code>data.sql</code>.</p>
+    <p>Aplikacja ma wbudowaną bazę H2. Zawiera tabele <code>user_account</code>, <code>shop</code>, <code>product</code>,
+      <code>inventory_item</code>, <code>stock_movement</code>, <code>issue_order</code>, <code>issue_order_line</code>
+      i <code>issue_order_item</code> z danymi z pliku <code>data.sql</code>.</p>
     <table>
       <tr><td>JDBC URL</td><td><code>jdbc:h2:file:./data/wdtb</code></td></tr>
       <tr><td>Użytkownik</td><td><code>sa</code></td></tr>
